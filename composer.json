@@ -1,0 +1,22 @@
+{
+    "name": "madlines/validation",
+    "type": "library",
+    "description": "Independent and elastic data filtering and validating library",
+    "keywords": [],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Aleksander Ciesiolkiewicz",
+            "email": "a.ciesiolkiewicz@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.2.*"
+    },
+    "autoload": {
+        "psr-4": { "Madlines\\Validation\\": "src/Madlines/Validation" }
+    }
+}
