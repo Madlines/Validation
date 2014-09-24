@@ -1,0 +1,14 @@
+language: php
+php:
+  - 5.4
+install:
+  - sudo apt-get update 
+  - sudo apt-get install php5
+  - composer install --dev
+script:
+  - php vendor/bin/phpunit tests 
+cache:
+  apt: true
+  directories:
+  - vendor
+  - composer.lock
