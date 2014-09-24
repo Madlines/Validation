@@ -160,13 +160,11 @@ class Field
             }
         }
 
+        $result = [];
         if ($this->forceError) {
-            return [
-                str_replace(':field', $this->name, $this->forceErrorMessage)
-            ];
+            $result[] = str_replace(':field', $this->name, $this->forceErrorMessage);
         }
 
-        $result = [];
         foreach ($this->rules as $ruleName => $rule) {
             $className = 'Rule\\' . ucfirst($ruleName);
             if (!class_exists(__NAMESPACE__ . '\\' . $className)) {
