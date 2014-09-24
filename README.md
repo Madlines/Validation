@@ -1,6 +1,8 @@
 # Madlines Validation
 Independent and elastic data filtering and validating library.
 
+[![Build Status](https://travis-ci.org/Madlines/Validation.svg?branch=master)](https://travis-ci.org/Madlines/Validation)
+
 ## How does it work?
 Simple!
 You tell that what kind of data you expect.
