@@ -17,7 +17,7 @@ class Regexp implements RuleInterface
     public function validate($input, $field, $message, array $params = [])
     {
         if (!isset($params['regexp'])) {
-            throw new \RuntimeException(
+            throw new \LogicException(
                 'You have to specify a regexp param for "regexp" rule'
             );
         }
