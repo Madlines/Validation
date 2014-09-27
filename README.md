@@ -155,7 +155,7 @@ your forced error message will end up with all other error messages inside Valid
 
 If some field that you defined in your validator doesn't exist inside the input it is assumed to be null.
 However you might need/want to have different default value. You can achieve that by using method `setDefault`
-on your Field `object`. Alternatively you can add key `default` to your configuration array (as shown on previous listing).
+on your `Field` object. Alternatively you can add key `default` to your configuration array (as shown on previous listing).
 
 ```
 $validation->field('foo')->setDefault('bar');
