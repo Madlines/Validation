@@ -53,6 +53,11 @@ class Field
     protected $forceErrorMessage = '';
 
     /**
+     * @var mixed - default value to be used if value is not provided
+     */
+    protected $default = null;
+
+    /**
      * Constructor sets object's name and the factory instance.
      *
      * @param string  $name    - name of the field
@@ -207,6 +212,30 @@ class Field
         $this->requiredMessage = $message;
 
         return $this;
+    }
+
+    /**
+     * Set default value - to be used if data for that field is not provided
+     *
+     * @param mixed $value - a value to be set as default
+     *
+     * @return self
+     */
+    public function setDefault($value)
+    {
+        $this->default = $value;
+
+        return $this;
+    }
+
+    /**
+     * Get defautl value for the field
+     *
+     * @return mixed
+     */
+    public function getDefault()
+    {
+        return $this->default;
     }
 
     /**

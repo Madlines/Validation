@@ -255,4 +255,13 @@ class FieldTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($forceError->getValue($field));
         $this->assertEquals($forceErrorMessage->getValue($field), 'Field :field - forced error');
     }
+
+    public function testDefaults()
+    {
+        $field = new \Madlines\Validation\Field('TheField', new \Madlines\Validation\Factory());
+        $this->assertNull($field->getDefault());
+
+        $field->setDefault('foo');
+        $this->assertEquals('foo', $field->getDefault());
+    }
 }

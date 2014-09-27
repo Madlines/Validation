@@ -37,12 +37,14 @@ class Validation
 
             $filters = isset($field['filters']) ? $field['filters'] : [];
             $rules = isset($field['rules']) ? $field['rules'] : [];
+            $default = isset($field['default']) ? $field['default'] : null;
 
             if ($required) {
                 $this->field($fieldName)->required($required);
             }
             
             $fieldObject = $this->field($fieldName);
+            $fieldObject->setDefault($default);
             foreach ($filters as $filter) {
                 $fieldObject->addFilter($filter);
             }
@@ -77,7 +79,7 @@ class Validation
      * Execute filtering and validating process on given dataset.
      * It returns filtered data or throws an exception containing validation errors.
      * All fields set will be present on the output. If any key will be missing in input
-     * array then it will be assumed to be null and processed as null.
+     * array then it will be assumed to be null (by default) and processed as null.
      *
      * @param array $data - input data to be filtered and validated.
      *
@@ -91,7 +93,7 @@ class Validation
 
         foreach ($this->fields as $name => $field) {
             if (!isset($data[$name])) {
-                $data[$name] = null;
+                $data[$name] = $field->getDefault();
             }
 
             $filtered[$name] = $field->filter($data[$name]);

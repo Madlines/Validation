@@ -9,7 +9,7 @@ You tell that what kind of data you expect.
 It gets assoc array of input data. It filters it. It verifies it.
 It returns filtered data for you to use or throws an exception with error messages inside.
 If there will be some input data that is not specified in validation object - it will be filtered out.
-If there will be some field defined in validation but missing in input data - it will be assumed to be null.
+If there will be some field defined in validation but missing in input data - it will be assumed to be null (by default).
 It also let you verify stuff outside the validator and then integrate error message into ValidationExceptioni's messages.
 
 ## Why Exception?
@@ -98,6 +98,7 @@ require 'vendor/autoload.php';
 
 $config = [ 
     'aNumber' => [
+        'default' => 18,
         'filters' => ['int'],
     ],  
     'email' => [
@@ -125,7 +126,6 @@ $validation = new \Madlines\Validation\Validation($config);
 $data = []; 
 $data['email'] = 'notemail';
 $data['password'] = 'short';
-$data['aNumber'] = '3';
 
 // do some additional checking outside the validator
 if (email_taken($data['email'])) {
@@ -150,6 +150,16 @@ requested email address is free. In such cases method `forceError` comes in hand
 As you could have seen on previous code block - we verified just that using some external function.
 After that we forced field `email` to report an error on itself using method `forceError`. That way
 your forced error message will end up with all other error messages inside ValidationException.
+
+## Setting default values
+
+If some field that you defined in your validator doesn't exist inside the input it is assumed to be null.
+However you might need/want to have different default value. You can achieve that by using method `setDefault`
+on your Field `object`. Alternatively you can add key `default` to your configuration array (as shown on previous listing).
+
+```
+$validation->field('foo')->setDefault('bar');
+```
 
 ## Contributing
 

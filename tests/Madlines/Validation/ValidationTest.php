@@ -178,6 +178,7 @@ class ValidationTest extends \PHPUnit_Framework_TestCase
     {
         $params = [
             'field1' => [
+                'default' => 'foo',
                 'filters' => [
                     'foo', 'bar', 'lorem'
                 ],
@@ -225,6 +226,7 @@ class ValidationTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(isset($fieldsObjects['field2']));
 
         $field1Alt = new \Madlines\Validation\Field('field1', new \Madlines\Validation\Factory());
+        $field1Alt->setDefault('foo');
         foreach ($params['field1']['filters'] as $filter) {
             $field1Alt->addFilter($filter);
         }
@@ -278,5 +280,13 @@ class ValidationTest extends \PHPUnit_Framework_TestCase
             ],
             $messages
         );
+    }
+
+    public function testDefaults()
+    {
+        $validation = new \Madlines\Validation\Validation();
+        $validation->field('field')->setDefault('bar');
+
+        $this->assertEquals('bar', $validation->execute([])['field']);
     }
 }
