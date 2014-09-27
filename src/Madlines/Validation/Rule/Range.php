@@ -17,7 +17,7 @@ class Range implements RuleInterface
     {
 
         if (!isset($params['min']) || !isset($params['max'])) {
-            throw new \RuntimeException(
+            throw new \LogicException(
                 'You have to specify min and max params for "range" rule'
             );
         }
