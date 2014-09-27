@@ -125,14 +125,14 @@ class Field
         foreach ($this->filters as $filterName) {
             $className = 'Filter\\' . ucfirst($filterName);
             if (!class_exists(__NAMESPACE__ . '\\' . $className)) {
-                throw new \RuntimeException(
+                throw new \LogicException(
                     'Class ' . $className . ' doesn\'t exist within current namespace'
                 );
             }
 
             $filter = $this->factory->create($className);
             if (!($filter instanceof FilterInterface)) {
-                throw new \RuntimeException(
+                throw new \LogicException(
                     'Class ' . $className . ' should implement FilterInterface'
                 );
             }
@@ -168,14 +168,14 @@ class Field
         foreach ($this->rules as $ruleName => $rule) {
             $className = 'Rule\\' . ucfirst($ruleName);
             if (!class_exists(__NAMESPACE__ . '\\' . $className)) {
-                throw new \RuntimeException(
+                throw new \LogicException(
                     'Class ' . $className . ' doesn\'t exist within current namespace'
                 );
             }
 
             $ruleObject = $this->factory->create($className);
             if (!($ruleObject instanceof RuleInterface)) {
-                throw new \RuntimeException(
+                throw new \LogicException(
                     'Class ' . $className . ' should implement RuleInterface'
                 );
             }
