@@ -5,7 +5,7 @@ use Madlines\Validation\RuleInterface;
 
 /**
  * Madlines Validation Rule Email.
- * It verifies if given data is valid email address using build in PHP filters.
+ * It verifies if given data is valid email address using built in PHP filters.
  *
  * @author  Aleksander Ciesiolkiewicz <a.ciesiolkiewicz@gmail.com>
  * @license http://www.opensource.org/licenses/mit-license.php MIT
